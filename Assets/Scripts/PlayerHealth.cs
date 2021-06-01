@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float maxHP = 100;
+    public float curHP;
+    public bool inAction;
     void Start()
     {
-        
+        curHP = maxHP;
+        inAction = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    void Damage()
     {
-        
+        if (curHP <= 0 && inAction == true)
+        {
+            inAction = false;
+        }
+        else
+            return;
     }
 }

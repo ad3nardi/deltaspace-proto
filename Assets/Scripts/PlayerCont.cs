@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerCont : InputObj
 {
-    public bool gameActive;
+    public bool inAction;
 
     //Movement
     public float moveSpeed;
@@ -18,7 +19,6 @@ public class PlayerCont : InputObj
     public bool isYawingRight;
     public bool isYawingLeft;
 
-    private Vector3 previousRotationDirection = Vector3.forward;
     private Vector3 movementVector = new Vector3();
     private Vector3 directionVector = new Vector3();
 
@@ -28,6 +28,7 @@ public class PlayerCont : InputObj
     void Start()
     {
         cc = gameObject.GetComponent<CharacterController>();
+        inAction = gameObject.GetComponent<PlayerHealth>().inAction;
     }
 
     public override void GetInputs(InputList inputs)
@@ -36,22 +37,23 @@ public class PlayerCont : InputObj
         currentInput = inputs;
     }
 
-
     public override void Tick(InputList inputs, float delta)
     {
+        directionVector = directionVector.normalized;
+        transform.rotation = Quaternion.LookRotation(directionVector);
+        cc.Move(movementVector * Time.deltaTime * moveSpeed);
     }
 
     public override void FixedTick(float delta)
     {
-        if (gameActive == true)
+        if (inAction == true)
         {
-            if(currentInput.vertical < 0)
+            if(currentInput.vertical < 0 && isPitchingDown != true)
             {
                 isPitchingUp = true;
-                cc.transform.rotation;
-
+                transform.rotation = Quaternion.LookRotation(directionVector);
             }
-            if (currentInput.vertical > 0)
+            if (currentInput.vertical > 0 && isPitchingUp != true)
             {
                 isPitchingDown = true;
             }
@@ -91,6 +93,15 @@ public class PlayerCont : InputObj
             {
 
             }
+            float rotX = currentInput.horizontal;
+            float rotZ = -currentInput.vertical;
+            directionVector = new Vector3(rotX, 0.0f, rotZ);
+            /*
+            if(directionVector.magnitude != 0)
+            {
+                directionVector = Vector3.zero;
+            }
+            */
         }
     }
 

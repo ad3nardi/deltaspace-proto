@@ -6,8 +6,6 @@ public class Inputs : MonoBehaviour
 {
     public InputList inp = new InputList();
     public InputObj[] inputObjects;
-    public bool inAction = false;
-
     void Start()
     {
         for (int i = 0; i < inputObjects.Length; i++)
@@ -18,19 +16,15 @@ public class Inputs : MonoBehaviour
     void Update()
     {
         inp = new InputList();
-        if (inAction == false)
-        {
-            inp.vertical = Input.GetAxis("Vertical");
-            inp.horizontal = Input.GetAxis("Horizontal");
-            inp.verticalAim = Input.GetAxis("VA");
-            inp.horizontalAim = Input.GetAxis("HA");
-            inp.fire = Input.GetButton("Fire");
-            inp.weaponSelect = Input.GetButton("weaponSelect");
-            inp.rollLeft = Input.GetButton("rollLeft");
-            inp.rollRight = Input.GetButton("rollRight");
+        inp.vertical = Input.GetAxis("VertMove");
+        inp.horizontal = Input.GetAxis("HorMove");
+        inp.verticalAim = Input.GetAxis("VertAim");
+        inp.horizontalAim = Input.GetAxis("HorAim");
+        inp.fire = Input.GetButton("Fire");
+        inp.weaponSelect = Input.GetButton("WeaponSelect");
+        inp.rollLeft = Input.GetButton("RollLeft");
+        inp.rollRight = Input.GetButton("RollRight");
 
-
-        }
         for (int i = 0; i < inputObjects.Length; i++)
         {
             inputObjects[i].GetInputs(inp);
