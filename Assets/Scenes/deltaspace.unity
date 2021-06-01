@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   envPartCount: 0
-  envPartDepth: 0
+  envPartDepth: 2
   playerPosCount: 0
-  player: {fileID: 0}
+  player: {fileID: 2051092258}
   envParts: []
 --- !u!4 &231910696
 Transform:
@@ -193,8 +193,9 @@ MonoBehaviour:
     weaponSelect: 0
     rollLeft: 0
     rollRight: 0
-  inputObjects: []
-  inAction: 0
+  inputObjects:
+  - {fileID: 2051092259}
+  - {fileID: 2051092259}
 --- !u!1 &365761069
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,11 +439,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5223956067516854652, guid: 92bbbdc81ad5d724da15f5cbe2834c58, type: 3}
   m_PrefabInstance: {fileID: 910498641469368071}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2051092259
+--- !u!114 &2051092259 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2051092259, guid: 92bbbdc81ad5d724da15f5cbe2834c58, type: 3}
+  m_PrefabInstance: {fileID: 910498641469368071}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051092258}
   m_Enabled: 1
@@ -450,31 +450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81680422dde45e4384494067231d1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  control: {fileID: 0}
-  gameActive: 0
-  moveSpeed: 0
-  rollSpeed: 0
-  yawSpeed: 0
-  pitchSpeed: 0
-  isPitchingUp: 0
-  isPitchingDown: 0
-  isYawingRight: 0
-  isYawingLeft: 0
---- !u!114 &2051092260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051092258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a53b8453bcf2b4ea4d9b73fe74f828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  curHP: 0
-  isAlive: 0
 --- !u!1001 &910498641469368071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -482,6 +457,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2051092259, guid: 92bbbdc81ad5d724da15f5cbe2834c58, type: 3}
+      propertyPath: control
+      value: 
+      objectReference: {fileID: 231910697}
+    - target: {fileID: 2051092259, guid: 92bbbdc81ad5d724da15f5cbe2834c58, type: 3}
+      propertyPath: latSpd
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1354394559600732855, guid: 92bbbdc81ad5d724da15f5cbe2834c58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
