@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/menu_main.unity
+    guid: 9b388cca1b1652147aa4fb6351f6c157
+  - enabled: 1
+    path: Assets/Scenes/control_menu.unity
+    guid: 3f9fa3cf9523e814387f3c400426a1f9
+  - enabled: 1
     path: Assets/Scenes/deltaspace.unity
     guid: 819126eef93ae554db679119efe7c755
   m_configObjects: {}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int Score = 0;
     public int envPartCount = 0;
     public int envPartDepth = 0;
     public float playerPosCount = 0;

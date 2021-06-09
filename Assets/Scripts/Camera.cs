@@ -7,8 +7,6 @@ public class Camera : MonoBehaviour
     public Transform target;
     public float smoothSpd = 0.125f;
     public Vector3 offset;
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 targetPos = target.position + offset;

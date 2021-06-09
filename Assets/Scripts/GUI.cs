@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject pauseMenu;
+    public bool isPaused;
     void Start()
     {
-        
+        isPaused = false;
+        pauseMenu.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Pause();
+    }
+    void Pause()
+    {
+        Time.timeScale = 0;
+        isPaused = true;
+        pauseMenu.SetActive(true);
     }
 }

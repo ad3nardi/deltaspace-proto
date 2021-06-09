@@ -9,13 +9,14 @@ public class PlayerCont : InputObj
     InputList currentInput = new InputList();
 
     public bool inAction;
-    public GameObject mgRet;
+    public Transform mgRet;
 
     //Movement
     public float moveSpd;
     public float throttle;
     public float latSpd;
     public float rollSpd;
+    public float rollMult;
     public float yawSpd;
     public float pitchSpd;
 
@@ -51,37 +52,30 @@ public class PlayerCont : InputObj
     {
         if (inAction == true)
         {
-            if (currentInput.vertical < 0 && isPitchingDown != true)
+            if (currentInput.vertical < 0)
             {
-                isPitchingUp = true;
-                gameObject.transform.Rotate(pitchSpd * Time.fixedDeltaTime, 0.0f, 0.0f);
+                transform.Rotate(pitchSpd * Time.fixedDeltaTime, 0.0f, 0.0f);
                 cc.Move(Vector3.down * latSpd * Time.deltaTime);
             }
-            if (currentInput.vertical > 0 && isPitchingUp != true)
+            if (currentInput.vertical > 0)
             {
-                isPitchingDown = true;
-                gameObject.transform.Rotate(-pitchSpd * Time.fixedDeltaTime, 0.0f, 0.0f);
+                transform.Rotate(-pitchSpd * Time.fixedDeltaTime, 0.0f, 0.0f);
                 cc.Move(Vector3.up * latSpd * Time.deltaTime);
             }
-            if (currentInput.vertical == 0)
-            {
-                isPitchingUp = false;
-                isPitchingDown = false;
-            }
-            if (isPitchingDown == false && isPitchingUp == false && isRollingLeft == false && isRollingRight == false)
+            if (isRollingLeft == false && isRollingRight == false)
             {
                 transform.rotation = Quaternion.identity;
             }
             if (currentInput.horizontal < 0)
             {
                 isYawingLeft = true;
-                gameObject.transform.Rotate(0.0f, 0.0f, rollSpd * yawSpd * Time.fixedDeltaTime);
+                transform.Rotate(0.0f, 0.0f, rollSpd * yawSpd * Time.fixedDeltaTime);
                 cc.Move(Vector3.left * latSpd * Time.deltaTime);
             }
             if (currentInput.horizontal > 0)
             {
                 isYawingRight = true;
-                gameObject.transform.Rotate(0.0f, 0.0f, -rollSpd * yawSpd * Time.fixedDeltaTime);
+                transform.Rotate(0.0f, 0.0f, -rollSpd * yawSpd * Time.fixedDeltaTime);
                 cc.Move(Vector3.right * latSpd * Time.deltaTime);
             }
             if (currentInput.horizontal == 0)
@@ -91,12 +85,12 @@ public class PlayerCont : InputObj
             }
             if (currentInput.rollLeft == true)
             {
-                gameObject.transform.Rotate(0.0f, 0.0f, rollSpd * Time.fixedDeltaTime);
+                transform.Rotate(0.0f, 0.0f, rollSpd * rollMult * Time.fixedDeltaTime);
                 isRollingLeft = true;
             }
             if (currentInput.rollRight == true)
             {
-                gameObject.transform.Rotate(0.0f, 0.0f, -rollSpd * Time.fixedDeltaTime);
+                transform.Rotate(0.0f, 0.0f, -rollSpd * rollMult * Time.fixedDeltaTime);
                 isRollingRight = true;
             }
             if (currentInput.rollLeft == false && currentInput.rollRight == false)

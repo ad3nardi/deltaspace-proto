@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6518917286652710475}
   - component: {fileID: 4343297309276068245}
+  - component: {fileID: 4356891360705779483}
   m_Layer: 0
   m_Name: Torpedo
   m_TagString: Untagged
@@ -48,6 +49,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4356891360705779483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28639624519678211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc45b9cf42ce144188adc0cccd347ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 50
 --- !u!1 &7647675326219606678
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 32598bffd747594429f0c9e5995258bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,7 +152,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7647675326219606678}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
