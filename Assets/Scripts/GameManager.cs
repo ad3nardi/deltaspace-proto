@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int Score = 0;
+    public int gameScore = 0;
     public int envPartCount = 0;
     public int envPartDepth = 0;
     public float playerPosCount = 0;
     public GameObject player;
+    public Text score;
     public List<GameObject> envParts = new List<GameObject>();
     void Start()
     {
@@ -31,4 +33,9 @@ public class GameManager : MonoBehaviour
             BuildEnv();
         }
     }
+    public void ScoreUp()
+    {
+        score.text = (++gameScore).ToString();
+    }
+
 }

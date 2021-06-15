@@ -9,28 +9,32 @@ public class PlayerWeapons : InputObj
     public bool inAction = true;
     public bool isFiring;
     public bool mgReadyFire = true;
-    public bool misLock;
+    public bool mizLock;
     public bool missileActive;
     public bool torpReadyFire = true;
     public int weaponType = 1;
     public int torpAmmo = 5;
     public int mizAmmo = 5;
+    public float mizSpd;
     public float torpPower;
     public float mgFireRate;
     public float torpFireRate;
     public float lockTime;
     //weaponType mg = 1, missile = 2, torpedo = 3
+    public Camera cam;
     public GameObject mg;
     public GameObject mgRet;
+    public RectTransform MGret;
     public GameObject mgRound;
     public GameObject missile;
     public GameObject mizRet;
-    public GameObject mizTarget;
+    public GameObject miz;
     public GameObject torp;
     public GameObject torpLaunch;
     public Transform mgOrgin;
     public Transform mizOrigin;
     public Transform targetPos;
+    public Transform mizTarget;
     public Quaternion fireDir;
     public override void GetInputs(InputList inputs)
     {
@@ -44,7 +48,7 @@ public class PlayerWeapons : InputObj
     {
         if (inAction == true)
         {
-            if(currentInput.weaponSelect == true)
+            if (currentInput.weaponSelect == true)
             {
                 checkSelect();
             }
@@ -56,7 +60,7 @@ public class PlayerWeapons : InputObj
             if (currentInput.fire == true && weaponType == 2)
             {
                 isFiring = true;
-                misLock = false;
+                mizLock = false;
             }
             if (currentInput.fire == true && weaponType == 3)
             {
@@ -71,7 +75,6 @@ public class PlayerWeapons : InputObj
             }
         }
     }
-
     void checkSelect()
     {
         if (currentInput.weaponSelect == true && currentInput.verticalAim > 0)
@@ -99,9 +102,9 @@ public class PlayerWeapons : InputObj
     }
     void Update()
     {
+        RaycastHit hit;
         if (weaponType == 2)
         {
-            RaycastHit hit;
             float mizRange = 10;
             {
                 Ray mizRay = new Ray(mizOrigin.position, targetPos.position - mizOrigin.position);
@@ -111,32 +114,43 @@ public class PlayerWeapons : InputObj
                     if (hit.collider.tag == "Enemy")
                     {
                         missileLock();
-                        mizTarget = hit.collider.gameObject;
+                        mizTarget = hit.collider.transform;
                     }
                 }
             }
         }
     }
-    void missileLock()
+    public IEnumerator missileLock()
     {
-        
+        yield return new WaitForSeconds(lockTime);
+        MissileFire();
     }
+    void MissileFire()
+    {
+        Instantiate(miz, mizOrigin.position, mizOrigin.rotation);
+        miz.transform.LookAt(mizTarget);
+        StartCoroutine(MissileDirect(missile));
+    }
+    public IEnumerator MissileDirect(GameObject missile)
+        {
+        while (Vector3.Distance(mizTarget.position, missile.transform.position) > 0.3f)
+        {
+            missile.transform.position += (mizTarget.position - missile.transform.position).normalized * mizSpd * Time.deltaTime;
+            missile.transform.LookAt(mizTarget);
+            yield return null;
+        }
+        Destroy(miz);
+        }
     void mgFire()
     {
         RaycastHit hit;
         float mgRange = 10;
-        Ray mgRay = new Ray(mgOrgin.position, targetPos.position - mgOrgin.position);
-        Debug.DrawRay(mgOrgin.position, targetPos.position - mgOrgin.position);
+        Ray mgRay = new Ray(mgOrgin.position, MGret.position - mgOrgin.position);
+        Debug.DrawRay(mgOrgin.position, MGret.position - mgOrgin.position);
+    //    MGret.transform.position = cam.WorldToViewportPoint(hit.point);
         if (Physics.Raycast(mgRay, out hit, mgRange))
         {
-            if(hit.collider.tag == "enemy")
-            {
-                Debug.Log("Hit enemy");
-            }
-            if (hit.collider.tag == "Environment")
-            {
-                Debug.Log("Hit environment");
-            }
+            
         }
         if (mgReadyFire == true)
         {
@@ -150,7 +164,6 @@ public class PlayerWeapons : InputObj
         {
             return;
         }
-     
     }
     private IEnumerator ResetMG()
     {

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7977713932254585290}
+  - component: {fileID: -3928205414386435484}
   m_Layer: 0
   m_Name: BomberSquad
   m_TagString: Untagged
@@ -33,6 +34,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3928205414386435484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055506809362676351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f59ad1b5269d44c83c8684d59d5a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemType: 0
+  hunterTarget: {fileID: 0}
+  isHunting: 0
+  smoothSpd: 0.125
+  offset: {x: 0, y: 0, z: 0}
+  HuntTrigger: {fileID: 0}
+  bomberSpd: 1
+  strikerSpd: 1
 --- !u!1001 &888684399416644048
 PrefabInstance:
   m_ObjectHideFlags: 0

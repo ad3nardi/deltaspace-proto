@@ -133,6 +133,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5819003411965100836}
+  - component: {fileID: 4601258438569120304}
+  - component: {fileID: 6312037020396935710}
   m_Layer: 0
   m_Name: BombBay
   m_TagString: Untagged
@@ -147,13 +149,45 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165731386987514298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.2506707, y: -0, z: -0, w: 0.9680725}
   m_LocalPosition: {x: 0, y: -0.6, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3475509166013435740}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.034, y: 0, z: 0}
+--- !u!114 &4601258438569120304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165731386987514298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300c5e7928b25a34fb5b5d833ca75213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemType: 0
+  enemRnd: {fileID: 7501741846539415126, guid: d1b6bff6252da134a81ff28a818f8f64, type: 3}
+  bomb: {fileID: 7501741846539415126, guid: 3284f56c540133143966826cd8b5552d, type: 3}
+  bombPwr: 20
+  rndPwr: 20
+  enemRndRdy: 1
+  enemFR: 0.1
+--- !u!65 &6312037020396935710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165731386987514298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1, z: 5}
+  m_Center: {x: 0, y: 0, z: 8.5}
 --- !u!1 &1380445058649257686
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +766,6 @@ GameObject:
   - component: {fileID: 3475509166013435740}
   - component: {fileID: 3424473565660769169}
   - component: {fileID: 8834963631438166724}
-  - component: {fileID: -4343272417686804184}
   - component: {fileID: 7008043992163458909}
   - component: {fileID: 6340987739517320913}
   m_Layer: 0
@@ -769,8 +802,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.136696, y: 1.0625334, z: 4.6135654}
-  m_Center: {x: 0, y: 0.13229513, z: -1.2765617}
+  m_Size: {x: 3, y: 1, z: 4.6}
+  m_Center: {x: 0, y: 0, z: -1.2}
 --- !u!114 &8834963631438166724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,22 +818,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50
   curHP: 0
---- !u!114 &-4343272417686804184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4110706007140931760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f59ad1b5269d44c83c8684d59d5a42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemType: 0
-  hunterTarget: {fileID: 0}
-  smoothSpd: 0.125
-  offset: {x: 0, y: 0, z: 0}
 --- !u!198 &7008043992163458909
 ParticleSystem:
   m_ObjectHideFlags: 0

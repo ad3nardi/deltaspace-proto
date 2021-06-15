@@ -8,6 +8,7 @@ public class GUI : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPaused;
+
     void Start()
     {
         isPaused = false;

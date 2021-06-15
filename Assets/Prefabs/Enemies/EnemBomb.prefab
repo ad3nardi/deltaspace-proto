@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 6791527148060247535}
   - component: {fileID: 2728235431516921792}
   m_Layer: 0
-  m_Name: EnemRound
+  m_Name: EnemBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc45b9cf42ce144188adc0cccd347ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 10
+  dmg: 50
 --- !u!65 &6791527148060247535
 BoxCollider:
   m_ObjectHideFlags: 0

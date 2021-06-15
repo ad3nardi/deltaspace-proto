@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7937067246779977970}
+  - component: {fileID: -7540152365076451374}
   m_Layer: 0
   m_Name: StrikerSquad
   m_TagString: Untagged
@@ -35,6 +36,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7540152365076451374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526120023378797608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f59ad1b5269d44c83c8684d59d5a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemType: 1
+  hunterTarget: {fileID: 0}
+  isHunting: 0
+  smoothSpd: 0.125
+  offset: {x: 0, y: 0, z: 0}
+  HuntTrigger: {fileID: 0}
+  bomberSpd: 1
+  strikerSpd: 1
 --- !u!1001 &1352888612299004485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: -11.29
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalRotation.x
@@ -114,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.55
+      value: -5.222331
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalRotation.x
@@ -238,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: -11.29
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalRotation.x
@@ -300,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.6376686
+      value: -6.31
       objectReference: {fileID: 0}
     - target: {fileID: 3475509166013435740, guid: 39772f59f0a19344daa2272e73904187, type: 3}
       propertyPath: m_LocalRotation.x

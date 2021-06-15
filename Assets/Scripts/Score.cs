@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public int gameScore;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            Debug.Log("Scpre Up");
-            GameObject.Find("Score").GetComponent<Text>().text = (++gameScore).ToString();
+            GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUp();
+            StartCoroutine(DestorySegment());
         }
+    }
+    private IEnumerator DestorySegment()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(transform.parent.gameObject);
     }
 }

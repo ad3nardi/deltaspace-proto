@@ -10,6 +10,7 @@ public class PlayerCont : InputObj
 
     public bool inAction;
     public Transform mgRet;
+    public RectTransform MGret;
 
     //Movement
     public float moveSpd;
@@ -101,18 +102,22 @@ public class PlayerCont : InputObj
             if (currentInput.verticalAim < 0)
             {
                 mgRet.transform.Translate(Vector3.down * vertAimSpd * Time.fixedDeltaTime);
+                MGret.transform.Translate(Vector3.down * vertAimSpd * Time.deltaTime);
             }
             if (currentInput.verticalAim > 0)
             {
                 mgRet.transform.Translate(Vector3.up * vertAimSpd * Time.fixedDeltaTime);
+                MGret.transform.Translate(Vector3.up * vertAimSpd * Time.deltaTime);
             }
             if (currentInput.horizontalAim < 0)
             {
                 mgRet.transform.Translate(Vector3.left * horAimSpd * Time.fixedDeltaTime);
+                MGret.transform.Translate(Vector3.left * vertAimSpd * Time.deltaTime);
             }
             if (currentInput.horizontalAim > 0)
             {
                 mgRet.transform.Translate(Vector3.right * horAimSpd * Time.fixedDeltaTime);
+                MGret.transform.Translate(Vector3.right * vertAimSpd * Time.deltaTime);
             }
             cc.Move(Vector3.forward * moveSpd * Time.deltaTime);
         }
