@@ -24,6 +24,7 @@ public class Inputs : MonoBehaviour
         inp.weaponSelect = Input.GetButton("WeaponSelect");
         inp.rollLeft = Input.GetButton("RollLeft");
         inp.rollRight = Input.GetButton("RollRight");
+        inp.esc = Input.GetButton("Esc");
 
         for (int i = 0; i < inputObjects.Length; i++)
         {
@@ -50,4 +51,5 @@ public class InputList
     public bool weaponSelect;
     public bool rollLeft;
     public bool rollRight;
+    public bool esc;
 }

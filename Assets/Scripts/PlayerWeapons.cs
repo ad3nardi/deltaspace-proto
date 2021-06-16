@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerWeapons : InputObj
 {
     InputList currentInput = new InputList();
-    public bool inAction = true;
+    public GameManager gm;
     public bool isFiring;
     public bool mgReadyFire = true;
     public bool mizLock;
@@ -14,6 +14,7 @@ public class PlayerWeapons : InputObj
     public bool torpReadyFire = true;
     public int weaponType = 1;
     public int torpAmmo = 5;
+    public int maxTorpAmmo = 5;
     public int mizAmmo = 5;
     public float mizSpd;
     public float torpPower;
@@ -36,6 +37,8 @@ public class PlayerWeapons : InputObj
     public Transform targetPos;
     public Transform mizTarget;
     public Quaternion fireDir;
+    public TorpedoAmmo Tammo;
+    public MissileAmmo Mammo;
     public override void GetInputs(InputList inputs)
     {
         currentInput = inputs;
@@ -43,10 +46,13 @@ public class PlayerWeapons : InputObj
     void Start()
     {
         mizRet.SetActive(false);
+        Tammo.SetMaxTammo(maxTorpAmmo);
+        Mammo.SetMaxMammo(maxTorpAmmo);
+        torpAmmo = maxTorpAmmo;
     }
     public override void FixedTick(float delta)
     {
-        if (inAction == true)
+        if (gm.gS == GS.inGame)
         {
             if (currentInput.weaponSelect == true)
             {
@@ -71,6 +77,7 @@ public class PlayerWeapons : InputObj
                     torpReadyFire = false;
                     StartCoroutine(resetTorp());
                     torpAmmo--;
+                    Tammo.SetTammo(torpAmmo);
                 }
             }
         }
@@ -130,6 +137,9 @@ public class PlayerWeapons : InputObj
         Instantiate(miz, mizOrigin.position, mizOrigin.rotation);
         miz.transform.LookAt(mizTarget);
         StartCoroutine(MissileDirect(missile));
+        mizAmmo--;
+        Mammo.SetMammo(mizAmmo);
+
     }
     public IEnumerator MissileDirect(GameObject missile)
         {
@@ -144,19 +154,18 @@ public class PlayerWeapons : InputObj
     void mgFire()
     {
         RaycastHit hit;
-        float mgRange = 10;
-        Ray mgRay = new Ray(mgOrgin.position, MGret.position - mgOrgin.position);
-        Debug.DrawRay(mgOrgin.position, MGret.position - mgOrgin.position);
-    //    MGret.transform.position = cam.WorldToViewportPoint(hit.point);
-        if (Physics.Raycast(mgRay, out hit, mgRange))
-        {
-            
-        }
+    //    int mgRange = 10;
+        Ray mgRay = new Ray(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position) - mgOrgin.position);
+        Debug.DrawRay(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position) - mgOrgin.position);
+    //    if (Physics.Raycast(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position), out hit, mgRange))
+    //    {
+
+    //    }
         if (mgReadyFire == true)
         {
-            GameObject spawned = Instantiate(mgRound);
-            spawned.transform.forward = mgRay.direction;
-            spawned.transform.position = mgOrgin.position;
+            GameObject mgRnd = Instantiate(mgRound);
+            mgRnd.transform.forward = mgRay.direction;
+            mgRnd.transform.position = mgOrgin.position;
             mgReadyFire = false;
             StartCoroutine(ResetMG());
         }

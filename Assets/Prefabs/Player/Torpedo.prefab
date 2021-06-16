@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6518917286652710475}
   - component: {fileID: 4343297309276068245}
   - component: {fileID: 4356891360705779483}
+  - component: {fileID: 4694152822702521780}
   m_Layer: 0
   m_Name: Torpedo
   m_TagString: Untagged
@@ -62,6 +63,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 50
+--- !u!136 &4694152822702521780
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28639624519678211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29
+  m_Height: 1.03
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7647675326219606678
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +88,6 @@ GameObject:
   - component: {fileID: 5512543620145071674}
   - component: {fileID: 5030066102895510077}
   - component: {fileID: 1510013974397261575}
-  - component: {fileID: 2537912974571489239}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -144,17 +158,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2537912974571489239
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7647675326219606678}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

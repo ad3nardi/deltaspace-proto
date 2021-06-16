@@ -15,7 +15,6 @@ public class EnemyAI : MonoBehaviour
     public Collider HuntTrigger;
     public float bomberSpd;
     public float strikerSpd;
-
     private void Start()
     {
         if(enemType == ToggleType.hunter)
@@ -43,7 +42,6 @@ public class EnemyAI : MonoBehaviour
             transform.Translate(transform.forward * strikerSpd);
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         isHunting = true;

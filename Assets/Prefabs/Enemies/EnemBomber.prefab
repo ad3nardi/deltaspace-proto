@@ -175,6 +175,7 @@ MonoBehaviour:
   rndPwr: 20
   enemRndRdy: 1
   enemFR: 0.1
+  bombFR: 0.2
 --- !u!65 &6312037020396935710
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -186,8 +187,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 5}
-  m_Center: {x: 0, y: 0, z: 8.5}
+  m_Size: {x: 7.810325, y: 3.6638901, z: 5}
+  m_Center: {x: -0.518389, y: -0.19452974, z: 8.499952}
 --- !u!1 &1380445058649257686
 GameObject:
   m_ObjectHideFlags: 0

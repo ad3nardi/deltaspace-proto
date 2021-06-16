@@ -52,8 +52,8 @@ MonoBehaviour:
   smoothSpd: 0.125
   offset: {x: 0, y: 0, z: 0}
   HuntTrigger: {fileID: 0}
-  bomberSpd: 1
-  strikerSpd: 1
+  bomberSpd: 0.2
+  strikerSpd: 0.5
 --- !u!1001 &1300576914989846941
 PrefabInstance:
   m_ObjectHideFlags: 0

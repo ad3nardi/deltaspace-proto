@@ -1,30 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameManager gm;
     public int maxHP = 100;
     public int curHP;
-    public bool inAction;
     public HP_UI hpBar;
-    
     void Start()
     {
         curHP = maxHP;
         hpBar.SetMaxHealth(maxHP);
-        inAction = true;
     }
     public void Damage(int dmg)
     {
         GetComponent<ParticleSystem>().Play();
         curHP -= dmg;
+        hpBar.SetHealth(curHP);
         if (curHP <= 0)
-        {
-            inAction = false;
-        }
+            gm.GameStateChange(GS.isDead);
         else
             return;
     }

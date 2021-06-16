@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public GameObject GM;
+    public GameManager gm;
     public GameObject pauseMenu;
     public void ClickButton(int buttonClicked)
     {
@@ -21,14 +21,12 @@ public class UI : MonoBehaviour
         if (buttonClicked == 5)
         {
             Time.timeScale = 1;
-            GM.GetComponent<GUI>().isPaused = false;
-            pauseMenu.SetActive(false);
+            gm.GameStateChange(GS.inGame);
+            gm.gS = GS.inGame;
         }
     }
-
     public void ExitGame()
     {
-        Debug.Log("exiting game");
         Application.Quit();
     }
 }

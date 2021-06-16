@@ -47,28 +47,34 @@ MonoBehaviour:
   inAction: 1
   isFiring: 0
   mgReadyFire: 1
-  misLock: 0
+  mizLock: 0
   missileActive: 0
   torpReadyFire: 1
   weaponType: 1
   torpAmmo: 5
+  maxTorpAmmo: 5
   mizAmmo: 5
+  mizSpd: 0
   torpPower: 100
   mgFireRate: 1
   torpFireRate: 2
   lockTime: 0
+  cam: {fileID: 0}
   mg: {fileID: 3844696304549259415}
   mgRet: {fileID: 0}
+  MGret: {fileID: 0}
   mgRound: {fileID: 2859703132649261705, guid: fac5f2b149ad28344ab4611fb607f25d, type: 3}
   missile: {fileID: 3419681069706412648}
   mizRet: {fileID: 0}
-  mizTarget: {fileID: 0}
+  miz: {fileID: 0}
   torp: {fileID: 28639624519678211, guid: 7fdce5abd7b3434428abe1e0f2442c87, type: 3}
   torpLaunch: {fileID: 4694387782806350917}
   mgOrgin: {fileID: 8698666330375264651}
   mizOrigin: {fileID: 4592850749613006905}
   targetPos: {fileID: 0}
+  mizTarget: {fileID: 0}
   fireDir: {x: 0, y: 0, z: 0, w: 0}
+  Tammo: {fileID: 0}
 --- !u!1 &3419681069706412648
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3419681069706412648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: -1.045}
+  m_LocalPosition: {x: 0, y: -0.471, z: -1.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -123,7 +129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3844696304549259415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.85}
+  m_LocalPosition: {x: 0, y: -0.102, z: 1.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -153,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4694387782806350917}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: -0.337}
+  m_LocalPosition: {x: 0, y: -0.413, z: -0.337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -174,6 +180,7 @@ GameObject:
   - component: {fileID: 747506045113502921}
   - component: {fileID: 4589381848426489097}
   - component: {fileID: 5897851188626841769}
+  - component: {fileID: 7730902421064908563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -233,6 +240,7 @@ MonoBehaviour:
   control: {fileID: 0}
   inAction: 0
   mgRet: {fileID: 0}
+  MGret: {fileID: 0}
   moveSpd: 0.5
   throttle: 0
   latSpd: 10
@@ -5118,6 +5126,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7730902421064908563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223956067516854652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.365014, y: 0.19449043, z: 2.2125406}
+  m_Center: {x: 0.004934728, y: 0.062446117, z: -0.6108403}
 --- !u!1001 &2247426879545454276
 PrefabInstance:
   m_ObjectHideFlags: 0

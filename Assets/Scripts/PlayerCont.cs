@@ -7,11 +7,9 @@ using UnityEngine.Rendering.Universal.Internal;
 public class PlayerCont : InputObj
 {
     InputList currentInput = new InputList();
-
-    public bool inAction;
+    public GameManager gm;
     public Transform mgRet;
     public RectTransform MGret;
-
     //Movement
     public float moveSpd;
     public float throttle;
@@ -36,7 +34,6 @@ public class PlayerCont : InputObj
     void Start()
     {
         cc = gameObject.GetComponent<CharacterController>();
-        inAction = true;
     }
 
     public override void GetInputs(InputList inputs)
@@ -51,7 +48,7 @@ public class PlayerCont : InputObj
 
     public override void FixedTick(float delta)
     {
-        if (inAction == true)
+        if (gm.gS == GS.inGame)
         {
             if (currentInput.vertical < 0)
             {
@@ -119,7 +116,17 @@ public class PlayerCont : InputObj
                 mgRet.transform.Translate(Vector3.right * horAimSpd * Time.fixedDeltaTime);
                 MGret.transform.Translate(Vector3.right * vertAimSpd * Time.deltaTime);
             }
+            if (currentInput.esc == true)
+            {
+                gm.GameStateChange(GS.inMenu);
+            }
             cc.Move(Vector3.forward * moveSpd * Time.deltaTime);
         }
+        if (gm.gS == GS.preGame)
+            if (currentInput.fire == true)
+            {
+                gm.GameStateChange(GS.inGame);
+                gm.gS = GS.inGame;
+            }
     }
 }
