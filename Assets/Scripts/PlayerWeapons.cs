@@ -22,10 +22,8 @@ public class PlayerWeapons : InputObj
     public float torpFireRate;
     public float lockTime;
     //weaponType mg = 1, missile = 2, torpedo = 3
-    public Camera cam;
     public GameObject mg;
     public GameObject mgRet;
-    public RectTransform MGret;
     public GameObject mgRound;
     public GameObject missile;
     public GameObject mizRet;
@@ -107,26 +105,6 @@ public class PlayerWeapons : InputObj
             mizRet.SetActive(false);
         }
     }
-    void Update()
-    {
-        RaycastHit hit;
-        if (weaponType == 2)
-        {
-            float mizRange = 10;
-            {
-                Ray mizRay = new Ray(mizOrigin.position, targetPos.position - mizOrigin.position);
-                Debug.DrawRay(mizOrigin.position, targetPos.position - mizOrigin.position);
-                if (Physics.Raycast(mizRay, out hit, mizRange))
-                {
-                    if (hit.collider.tag == "Enemy")
-                    {
-                        missileLock();
-                        mizTarget = hit.collider.transform;
-                    }
-                }
-            }
-        }
-    }
     public IEnumerator missileLock()
     {
         yield return new WaitForSeconds(lockTime);
@@ -153,14 +131,8 @@ public class PlayerWeapons : InputObj
         }
     void mgFire()
     {
-        RaycastHit hit;
-    //    int mgRange = 10;
-        Ray mgRay = new Ray(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position) - mgOrgin.position);
-        Debug.DrawRay(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position) - mgOrgin.position);
-    //    if (Physics.Raycast(mgOrgin.position, cam.ScreenToWorldPoint(MGret.position), out hit, mgRange))
-    //    {
-
-    //    }
+        Ray mgRay = new Ray(mgOrgin.position, mgRet.transform.position - mgOrgin.position);
+        Debug.DrawRay(mgOrgin.position, mgRet.transform.position - mgOrgin.position);
         if (mgReadyFire == true)
         {
             GameObject mgRnd = Instantiate(mgRound);

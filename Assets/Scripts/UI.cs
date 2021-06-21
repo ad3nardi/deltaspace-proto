@@ -7,23 +7,25 @@ using UnityEngine.SceneManagement;
 public class UI : MonoBehaviour
 {
     public GameManager gm;
-    public GameObject pauseMenu;
-    public void ClickButton(int buttonClicked)
+
+    public void loadDeltaSpace()
     {
-        if (buttonClicked == 1)
-            SceneManager.LoadScene("deltaspace");
-        if (buttonClicked == 2)
-            ExitGame();
-        if (buttonClicked == 3)
-            SceneManager.LoadScene("control_menu");
-        if (buttonClicked == 4)
-            SceneManager.LoadScene("menu_main");
-        if (buttonClicked == 5)
-        {
-            Time.timeScale = 1;
-            gm.GameStateChange(GS.inGame);
-            gm.gS = GS.inGame;
-        }
+        SceneManager.LoadScene("deltaspace");
+    }
+    public void Controls()
+    {
+        SceneManager.LoadScene("control_menu");
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("menu_main");
+    }
+    public void UnPause()
+    {
+        gm.gS = GS.inGame;
+        gm.GameStateChange(GS.inGame);
+        Debug.Log("inGame");
+
     }
     public void ExitGame()
     {

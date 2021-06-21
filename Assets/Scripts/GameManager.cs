@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GS gS;
+    public GameObject player;
     public GameObject pauseMenu;
     public GameObject preMenu;
     public GameObject deathMenu;
@@ -15,7 +16,6 @@ public class GameManager : MonoBehaviour
     public int envPartCount = 0;
     public int envPartDepth = 0;
     public float playerPosCount = 0;
-    public GameObject player;
     public Text score;
     public Text deathScore;
     public List<GameObject> envParts = new List<GameObject>();
@@ -29,8 +29,7 @@ public class GameManager : MonoBehaviour
     }
     public void BuildEnv()
     {
-        Instantiate(envParts[Random.Range(0, envParts.Count)],
-            Vector3.forward * envPartCount * envPartDepth, Quaternion.identity);
+        Instantiate(envParts[Random.Range(0, envParts.Count)], Vector3.forward * envPartCount * envPartDepth, Quaternion.identity);
         envPartCount++;
     }
     void Update()
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             deathMenu.SetActive(false);
             inHUD.SetActive(false);
-            Time.timeScale = 1;
         }
         if(gS == GS.inGame)
         {
@@ -61,19 +59,19 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             deathMenu.SetActive(false);
             inHUD.SetActive(true);
-            Time.timeScale = 1;
+            Debug.Log("not paus");
+
         }
-        if(gS == GS.inMenu)
+        if (gS == GS.inMenu)
         {
             preMenu.SetActive(false);
             pauseMenu.SetActive(true);
             deathMenu.SetActive(false);
-            inHUD.SetActive(false);
-            Time.timeScale = 0;
+            inHUD.SetActive(true);
+            Debug.Log("Paused");
         }
         if(gS == GS.isDead)
         {
-            Time.timeScale = 0;
             preMenu.SetActive(false);
             pauseMenu.SetActive(false);
             deathMenu.SetActive(true);

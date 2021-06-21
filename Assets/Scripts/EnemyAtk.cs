@@ -22,7 +22,6 @@ public class EnemyAtk : MonoBehaviour
             if (enemRndRdy == true)
             {
                 GameObject GO = Instantiate(enemRnd, transform.position, Quaternion.identity) as GameObject;
-                GO.GetComponent<Rigidbody>().AddForce(enemRnd.transform.forward * rndPwr, ForceMode.Impulse);
                 enemRndRdy = false;
                 StartCoroutine(resetEnemRnd());
             }

@@ -9,10 +9,8 @@ public class EnemyAI : MonoBehaviour
     public enum ToggleType {bomber, striker, hunter}
     public ToggleType enemType;
     public GameObject hunterTarget;
-    public bool isHunting;
     public float smoothSpd = 0.125f;
     public Vector3 offset;
-    public Collider HuntTrigger;
     public float bomberSpd;
     public float strikerSpd;
     private void Start()
@@ -20,17 +18,7 @@ public class EnemyAI : MonoBehaviour
         if(enemType == ToggleType.hunter)
         hunterTarget = GameObject.Find("Player");
     }
-    void Update()
-    {
-        if (isHunting == true)
-        {
-            Vector3 targetPos = hunterTarget.transform.position + offset;
-            Vector3 smoothPos = Vector3.Lerp(transform.position, targetPos, smoothSpd);
-            transform.position = smoothPos;
-            transform.Translate(smoothPos);
-            transform.LookAt(hunterTarget.transform);
-        }
-    }
+
     private void FixedUpdate()
     {
         if(enemType == ToggleType.bomber)
@@ -41,9 +29,15 @@ public class EnemyAI : MonoBehaviour
         {
             transform.Translate(transform.forward * strikerSpd);
         }
+        if (enemType == ToggleType.hunter)
+        {
+            Vector3 targetPos = hunterTarget.transform.position + offset;
+            Vector3 smoothPos = Vector3.Lerp(transform.position, targetPos, smoothSpd);
+            transform.position = smoothPos;
+            transform.LookAt(hunterTarget.transform);
+
+            }
+        }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        isHunting = true;
-    }
-}
+
+

@@ -8,8 +8,8 @@ public class PlayerCont : InputObj
 {
     InputList currentInput = new InputList();
     public GameManager gm;
-    public Transform mgRet;
-    public RectTransform MGret;
+    public Transform weap;
+    public Vector3 aimClamp;
     //Movement
     public float moveSpd;
     public float throttle;
@@ -35,17 +35,10 @@ public class PlayerCont : InputObj
     {
         cc = gameObject.GetComponent<CharacterController>();
     }
-
     public override void GetInputs(InputList inputs)
     {
         currentInput = inputs;
     }
-
-    public override void Tick(InputList inputs, float delta)
-    {
-        
-    }
-
     public override void FixedTick(float delta)
     {
         if (gm.gS == GS.inGame)
@@ -97,30 +90,23 @@ public class PlayerCont : InputObj
                 isRollingRight = false;
             }
             if (currentInput.verticalAim < 0)
-            {
-                mgRet.transform.Translate(Vector3.down * vertAimSpd * Time.fixedDeltaTime);
-                MGret.transform.Translate(Vector3.down * vertAimSpd * Time.deltaTime);
-            }
+                aimClamp += -weap.transform.up * vertAimSpd * Time.deltaTime;
             if (currentInput.verticalAim > 0)
-            {
-                mgRet.transform.Translate(Vector3.up * vertAimSpd * Time.fixedDeltaTime);
-                MGret.transform.Translate(Vector3.up * vertAimSpd * Time.deltaTime);
-            }
+                aimClamp += weap.transform.up * vertAimSpd * Time.deltaTime;
             if (currentInput.horizontalAim < 0)
-            {
-                mgRet.transform.Translate(Vector3.left * horAimSpd * Time.fixedDeltaTime);
-                MGret.transform.Translate(Vector3.left * vertAimSpd * Time.deltaTime);
-            }
+                aimClamp += -weap.transform.right * vertAimSpd * Time.deltaTime;
             if (currentInput.horizontalAim > 0)
-            {
-                mgRet.transform.Translate(Vector3.right * horAimSpd * Time.fixedDeltaTime);
-                MGret.transform.Translate(Vector3.right * vertAimSpd * Time.deltaTime);
-            }
+                aimClamp += weap.transform.right * vertAimSpd * Time.deltaTime;
             if (currentInput.esc == true)
             {
                 gm.GameStateChange(GS.inMenu);
+                gm.gS = GS.inMenu;
             }
             cc.Move(Vector3.forward * moveSpd * Time.deltaTime);
+            aimClamp.x = Mathf.Clamp(aimClamp.x, -8.4f, 8.4f);
+            aimClamp.y = Mathf.Clamp(aimClamp.y, -4.5f, 5);
+            aimClamp.z = 20;
+            weap.transform.localPosition = aimClamp;
         }
         if (gm.gS == GS.preGame)
             if (currentInput.fire == true)

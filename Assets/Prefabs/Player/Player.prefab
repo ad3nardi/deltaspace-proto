@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 0}
-  inAction: 1
+  gm: {fileID: 0}
   isFiring: 0
   mgReadyFire: 1
   mizLock: 0
@@ -54,19 +54,17 @@ MonoBehaviour:
   torpAmmo: 5
   maxTorpAmmo: 5
   mizAmmo: 5
-  mizSpd: 0
+  mizSpd: 20
   torpPower: 100
-  mgFireRate: 1
+  mgFireRate: 0.1
   torpFireRate: 2
-  lockTime: 0
-  cam: {fileID: 0}
+  lockTime: 2
   mg: {fileID: 3844696304549259415}
   mgRet: {fileID: 0}
-  MGret: {fileID: 0}
   mgRound: {fileID: 2859703132649261705, guid: fac5f2b149ad28344ab4611fb607f25d, type: 3}
   missile: {fileID: 3419681069706412648}
   mizRet: {fileID: 0}
-  miz: {fileID: 0}
+  miz: {fileID: 28639624519678211, guid: 164d1ad2d549cc94e8e78c9fb7537ef7, type: 3}
   torp: {fileID: 28639624519678211, guid: 7fdce5abd7b3434428abe1e0f2442c87, type: 3}
   torpLaunch: {fileID: 4694387782806350917}
   mgOrgin: {fileID: 8698666330375264651}
@@ -75,6 +73,7 @@ MonoBehaviour:
   mizTarget: {fileID: 0}
   fireDir: {x: 0, y: 0, z: 0, w: 0}
   Tammo: {fileID: 0}
+  Mammo: {fileID: 0}
 --- !u!1 &3419681069706412648
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +179,6 @@ GameObject:
   - component: {fileID: 747506045113502921}
   - component: {fileID: 4589381848426489097}
   - component: {fileID: 5897851188626841769}
-  - component: {fileID: 7730902421064908563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -238,23 +236,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 0}
-  inAction: 0
-  mgRet: {fileID: 0}
-  MGret: {fileID: 0}
-  moveSpd: 0.5
+  gm: {fileID: 0}
+  weap: {fileID: 0}
+  aimClamp: {x: 0, y: 0, z: 0}
+  moveSpd: 10
   throttle: 0
   latSpd: 10
   rollSpd: 50
   rollMult: 0
   yawSpd: 100
-  pitchSpd: 10
-  vertAimSpd: 5
-  horAimSpd: 5
+  pitchSpd: 20
+  vertAimSpd: 10
+  horAimSpd: 10
   isPitchingUp: 0
   isPitchingDown: 0
   isRollingRight: 0
   isRollingLeft: 0
-  isYawingRight: 0
+  isYawingRight: 1
   isYawingLeft: 0
 --- !u!114 &2051092260
 MonoBehaviour:
@@ -268,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a53b8453bcf2b4ea4d9b73fe74f828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   maxHP: 100
   curHP: 0
-  inAction: 0
   hpBar: {fileID: 0}
 --- !u!198 &747506045113502921
 ParticleSystem:
@@ -5126,19 +5124,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7730902421064908563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5223956067516854652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.365014, y: 0.19449043, z: 2.2125406}
-  m_Center: {x: 0.004934728, y: 0.062446117, z: -0.6108403}
 --- !u!1001 &2247426879545454276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5149,6 +5134,10 @@ PrefabInstance:
     - target: {fileID: 398812042396278371, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
       propertyPath: m_Name
       value: playership
+      objectReference: {fileID: 0}
+    - target: {fileID: 398812042396278371, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1063709176030414041, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
       propertyPath: m_LocalPosition.x
