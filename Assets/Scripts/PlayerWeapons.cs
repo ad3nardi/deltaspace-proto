@@ -12,14 +12,17 @@ public class PlayerWeapons : InputObj
     public bool mizLock;
     public bool missileActive;
     public bool torpReadyFire = true;
+    public bool mizReadyFire = true;
     public int weaponType = 1;
     public int torpAmmo = 5;
     public int maxTorpAmmo = 5;
     public int mizAmmo = 5;
+    public int maxMizAmmo = 5;
     public float mizSpd;
     public float torpPower;
     public float mgFireRate;
     public float torpFireRate;
+    public float mizFireRate;
     public float lockTime;
     //weaponType mg = 1, missile = 2, torpedo = 3
     public GameObject mg;
@@ -65,6 +68,7 @@ public class PlayerWeapons : InputObj
             {
                 isFiring = true;
                 mizLock = false;
+                StartCoroutine(missileLock());
             }
             if (currentInput.fire == true && weaponType == 3)
             {
@@ -112,23 +116,18 @@ public class PlayerWeapons : InputObj
     }
     void MissileFire()
     {
-        Instantiate(miz, mizOrigin.position, mizOrigin.rotation);
-        miz.transform.LookAt(mizTarget);
-        StartCoroutine(MissileDirect(missile));
-        mizAmmo--;
-        Mammo.SetMammo(mizAmmo);
-
+        if(mizAmmo > 0 && mizReadyFire == true && mizTarget != null)
+        {
+            GameObject GO = Instantiate(miz, mizOrigin.position, mizOrigin.rotation) as GameObject;
+            GO.transform.LookAt(mizTarget);
+            GO.GetComponent<MissileMove>().mizTarget = mizTarget.GetComponent<EnemyHealth>().missileLockSpot;
+            mizAmmo--;
+            Mammo.SetMammo(mizAmmo);
+            StartCoroutine(resetMiz());
+            mizReadyFire = false;
+        }
     }
-    public IEnumerator MissileDirect(GameObject missile)
-        {
-        while (Vector3.Distance(mizTarget.position, missile.transform.position) > 0.3f)
-        {
-            missile.transform.position += (mizTarget.position - missile.transform.position).normalized * mizSpd * Time.deltaTime;
-            missile.transform.LookAt(mizTarget);
-            yield return null;
-        }
-        Destroy(miz);
-        }
+
     void mgFire()
     {
         Ray mgRay = new Ray(mgOrgin.position, mgRet.transform.position - mgOrgin.position);
@@ -136,6 +135,7 @@ public class PlayerWeapons : InputObj
         if (mgReadyFire == true)
         {
             GameObject mgRnd = Instantiate(mgRound);
+            mgRnd.GetComponent<Damage>().isPlayer = true;
             mgRnd.transform.forward = mgRay.direction;
             mgRnd.transform.position = mgOrgin.position;
             mgReadyFire = false;
@@ -155,5 +155,10 @@ public class PlayerWeapons : InputObj
     {
         yield return new WaitForSeconds(torpFireRate);
         torpReadyFire = true;
+    }
+    private IEnumerator resetMiz()
+    {
+        yield return new WaitForSeconds(mizFireRate);
+        mizReadyFire = true;
     }
 }

@@ -6,11 +6,11 @@ public class MissileTarget : MonoBehaviour
 {
     public PlayerWeapons pw;
 
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         pw.mizTarget = other.transform;
     }
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         pw.mizTarget = null;
     }

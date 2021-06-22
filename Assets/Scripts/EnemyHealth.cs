@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public Transform missileLockSpot;
     public int maxHP = 100;
     public int curHP;
     void Start()
@@ -23,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Remove()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUp(2);
         GetComponent<ParticleSystem>().Play();
         Destroy(gameObject);
     }

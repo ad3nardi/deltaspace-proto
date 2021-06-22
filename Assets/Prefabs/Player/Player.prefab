@@ -50,6 +50,7 @@ MonoBehaviour:
   mizLock: 0
   missileActive: 0
   torpReadyFire: 1
+  mizReadyFire: 1
   weaponType: 1
   torpAmmo: 5
   maxTorpAmmo: 5
@@ -58,6 +59,7 @@ MonoBehaviour:
   torpPower: 100
   mgFireRate: 0.1
   torpFireRate: 2
+  mizFireRate: 0
   lockTime: 2
   mg: {fileID: 3844696304549259415}
   mgRet: {fileID: 0}
@@ -98,7 +100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3419681069706412648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.471, z: -1.045}
+  m_LocalPosition: {x: 0, y: -0.471, z: -0.45999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -128,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3844696304549259415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.102, z: 1.04}
+  m_LocalPosition: {x: 0, y: -0.102, z: 1.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -158,7 +160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4694387782806350917}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.413, z: -0.337}
+  m_LocalPosition: {x: 0, y: -0.413, z: 0.248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1354394559600732855}
@@ -175,10 +177,10 @@ GameObject:
   - component: {fileID: 1354394559600732855}
   - component: {fileID: 3949928376711862}
   - component: {fileID: 2051092259}
-  - component: {fileID: 2051092260}
   - component: {fileID: 747506045113502921}
   - component: {fileID: 4589381848426489097}
-  - component: {fileID: 5897851188626841769}
+  - component: {fileID: 2051092260}
+  - component: {fileID: 2051092264}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -216,13 +218,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.1
-  m_Radius: 0.65
+  m_Height: 0
+  m_Radius: 0.64
   m_SlopeLimit: 45
   m_StepOffset: 0
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.1, z: -0.7}
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0.1
+  m_Center: {x: 0, y: 0.08, z: 0.29}
 --- !u!114 &2051092259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,22 +256,6 @@ MonoBehaviour:
   isRollingLeft: 0
   isYawingRight: 1
   isYawingLeft: 0
---- !u!114 &2051092260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5223956067516854652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a53b8453bcf2b4ea4d9b73fe74f828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  maxHP: 100
-  curHP: 0
-  hpBar: {fileID: 0}
 --- !u!198 &747506045113502921
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5108,7 +5094,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!54 &5897851188626841769
+--- !u!54 &2051092260
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5119,11 +5105,27 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!114 &2051092264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223956067516854652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a53b8453bcf2b4ea4d9b73fe74f828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  maxHP: 100
+  curHP: 0
+  hpBar: {fileID: 0}
 --- !u!1001 &2247426879545454276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5135,10 +5137,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: playership
       objectReference: {fileID: 0}
-    - target: {fileID: 398812042396278371, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 1063709176030414041, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5149,7 +5147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1063709176030414041, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1063709176030414041, guid: 96a3c6e255643eb48b5b773007e8763a, type: 3}
       propertyPath: m_LocalRotation.x

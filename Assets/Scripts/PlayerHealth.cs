@@ -16,11 +16,15 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Damage(int dmg)
     {
-        GetComponent<ParticleSystem>().Play();
+        GetComponentInParent<ParticleSystem>().Play();
         curHP -= dmg;
         hpBar.SetHealth(curHP);
         if (curHP <= 0)
+        {
+            gm.gS = GS.isDead;
             gm.GameStateChange(GS.isDead);
+            Destroy(gameObject);
+        }
         else
             return;
     }

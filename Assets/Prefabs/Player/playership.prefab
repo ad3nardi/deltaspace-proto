@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 1063709176030414041}
   - component: {fileID: 4137917768203946876}
   - component: {fileID: 2200044704832307126}
-  - component: {fileID: 2113320226610800807}
   - component: {fileID: 3140324595302528610}
   - component: {fileID: 4697067903043538491}
   m_Layer: 0
   m_Name: playership
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2113320226610800807
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398812042396278371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -5860672837154806744, guid: d1e5777114ecdc042ba1785ff33da622, type: 3}
 --- !u!198 &3140324595302528610
 ParticleSystem:
   m_ObjectHideFlags: 0

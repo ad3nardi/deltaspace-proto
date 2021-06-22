@@ -21,7 +21,8 @@ public class EnemyAtk : MonoBehaviour
         {
             if (enemRndRdy == true)
             {
-                GameObject GO = Instantiate(enemRnd, transform.position, Quaternion.identity) as GameObject;
+                GameObject GO = Instantiate(enemRnd, transform.position, transform.rotation) as GameObject;
+                GO.transform.LookAt(GameObject.Find("Player").transform);
                 enemRndRdy = false;
                 StartCoroutine(resetEnemRnd());
             }

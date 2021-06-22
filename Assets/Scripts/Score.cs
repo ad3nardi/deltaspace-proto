@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUp();
+            GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUp(1);
             StartCoroutine(DestorySegment());
         }
     }

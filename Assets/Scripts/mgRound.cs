@@ -12,6 +12,6 @@ public class mgRound : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(transform.forward * mgRoundSpd * Time.deltaTime);
+        transform.Translate(Vector3.forward * mgRoundSpd * Time.deltaTime);
     }
 }

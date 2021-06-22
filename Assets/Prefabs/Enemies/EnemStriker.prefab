@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 8834963631438166724}
   - component: {fileID: 1446219144326364052}
   - component: {fileID: 7660231332346890251}
+  - component: {fileID: 3560358417385397321}
   m_Layer: 0
   m_Name: EnemStriker
   m_TagString: Enemy
@@ -4968,6 +4969,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!54 &3560358417385397321
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110706007140931760}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4313066563726231038
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,9 +40,10 @@ public class GameManager : MonoBehaviour
             BuildEnv();
         }
     }
-    public void ScoreUp()
+    public void ScoreUp(int addScore)
     {
-        score.text = (++gameScore).ToString();
+        gameScore += addScore;
+        score.text = gameScore.ToString();
     }
     public void GameStateChange(GS gS)
     {
@@ -59,8 +60,6 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             deathMenu.SetActive(false);
             inHUD.SetActive(true);
-            Debug.Log("not paus");
-
         }
         if (gS == GS.inMenu)
         {
