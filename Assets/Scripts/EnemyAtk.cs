@@ -17,7 +17,7 @@ public class EnemyAtk : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (enemType == ToggleType.hunter || enemType == ToggleType.striker && other.tag == "Player")
+        if (enemType == ToggleType.hunter || enemType == ToggleType.striker && other.tag == "Player" && GameObject.Find("GameManager").GetComponent<GameManager>().gS == GS.inGame)
         {
             if (enemRndRdy == true)
             {
@@ -27,7 +27,7 @@ public class EnemyAtk : MonoBehaviour
                 StartCoroutine(resetEnemRnd());
             }
         }
-        if (enemType == ToggleType.bomber && other.tag == "Player")
+        if (enemType == ToggleType.bomber && other.tag == "Player" && GameObject.Find("GameManager").GetComponent<GameManager>().gS == GS.inGame)
         {
 
             GameObject GO = Instantiate(bomb, transform.position, Quaternion.identity) as GameObject;

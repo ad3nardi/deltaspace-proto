@@ -55,12 +55,13 @@ MonoBehaviour:
   torpAmmo: 5
   maxTorpAmmo: 5
   mizAmmo: 5
-  mizSpd: 20
+  maxMizAmmo: 5
+  mizSpd: 50
   torpPower: 100
   mgFireRate: 0.1
   torpFireRate: 2
-  mizFireRate: 0
-  lockTime: 2
+  mizFireRate: 1
+  lockTime: 0.1
   mg: {fileID: 3844696304549259415}
   mgRet: {fileID: 0}
   mgRound: {fileID: 2859703132649261705, guid: fac5f2b149ad28344ab4611fb607f25d, type: 3}
@@ -218,13 +219,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0.64
+  m_Height: 0.91
+  m_Radius: 0.37
   m_SlopeLimit: 45
   m_StepOffset: 0
-  m_SkinWidth: 0.0001
+  m_SkinWidth: 0.1
   m_MinMoveDistance: 0.1
-  m_Center: {x: 0, y: 0.08, z: 0.29}
+  m_Center: {x: 0, y: 0.18, z: 0.48}
 --- !u!114 &2051092259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   gm: {fileID: 0}
   weap: {fileID: 0}
   aimClamp: {x: 0, y: 0, z: 0}
-  moveSpd: 10
+  moveSpd: 15
   throttle: 0
   latSpd: 10
   rollSpd: 50

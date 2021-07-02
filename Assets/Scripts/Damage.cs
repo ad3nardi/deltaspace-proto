@@ -13,7 +13,7 @@ public class Damage : MonoBehaviour
             other.GetComponent<EnemyHealth>().Damage(dmg);
             Destroy(gameObject);
         }
-        if (other.tag == "Player" && !isPlayer)
+        if (other.tag == "Player")
         {
             other.GetComponent<PlayerHealth>().Damage(dmg);
             Destroy(gameObject);
@@ -26,11 +26,10 @@ public class Damage : MonoBehaviour
             other.gameObject.GetComponent<EnemyHealth>().Damage(dmg);
             Destroy(gameObject);
         }
-        if (other.gameObject.tag == "Player" && !isPlayer)
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerHealth>().Damage(dmg);
             Destroy(gameObject);
         }
     }
-
 }

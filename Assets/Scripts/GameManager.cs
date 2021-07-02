@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             deathMenu.SetActive(false);
             inHUD.SetActive(false);
+            Time.timeScale = 1;
         }
         if(gS == GS.inGame)
         {
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             deathMenu.SetActive(false);
             inHUD.SetActive(true);
+            Time.timeScale = 1;
         }
         if (gS == GS.inMenu)
         {
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(true);
             deathMenu.SetActive(false);
             inHUD.SetActive(true);
-            Debug.Log("Paused");
+            Time.timeScale = 1;
         }
         if(gS == GS.isDead)
         {
